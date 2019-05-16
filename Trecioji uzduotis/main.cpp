@@ -31,17 +31,17 @@ int main () {
        try { n = 5, s = 0;
         Vector<Studentas> a;
         std::string ilgv, ilgp;
-        auto start = std::chrono::high_resolution_clock::now();
+      //  auto start = std::chrono::high_resolution_clock::now();
         Skaitymas(n, s, a, ilgp, ilgv); cout << "Baigtas skaitymas." << endl;
         MedianaSTD(a, s); cout << "Baigta mediana." << endl;
         SkaiciavimasSTD(s, n, a); cout << "Baigtas skaiciavimas." << endl;
         RusiavimasSTD(a); cout << "Baigtas rusiavimas." << endl;
         GrupuoteSTD(a, s); cout << "Baigtas grupavimas." << endl;
         IsvedimasSTD(s, a, ilgv, ilgp); cout << "Baigtas isvedimas." << endl;
-        //RezultataiSTD(a, s, ilgv, ilgp);
-        auto ending = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<float> laikas = ending - start;
-        cout << laikas.count() << endl;
+        RezultataiSTD(a, s, ilgv, ilgp);
+        //auto ending = std::chrono::high_resolution_clock::now();
+        //std::chrono::duration<float> laikas = ending - start;
+       // cout << laikas.count() << endl;
        } catch (const char* msg) {
           cout << msg << endl;
         }
