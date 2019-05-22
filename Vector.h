@@ -190,6 +190,10 @@ class Vector {
        }
        void reserve(int cap) { //Reserve funkcija
             if (cap > capacity) {
+            T* temp = new T[cap];
+            std::copy(elementas, elementas + capacity, temp);
+            delete [] elementas;
+            elementas = temp;
             capacity = cap;
            }
            else {}
