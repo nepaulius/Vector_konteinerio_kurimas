@@ -17,16 +17,19 @@ class Vector {
         Vector(std::initializer_list<T> il) : dydis{static_cast<int>(il.size())}, capacity{static_cast<int>(il.size())}, elementas{new T [il.size()]} {std::copy(il.begin(), il.end(), elementas);}
         ~Vector() {delete [] elementas;} //Destruktorius
         Vector (const Vector& v) : dydis{v.dydis}, capacity{v.capacity}, elementas{new T [v.dydis]} { //Copy konstruktorius
+            std::cout << "Copy Constructor\n";
             for (int i = 0; i < v.dydis; i++)
                 elementas[i] = v.elementas[i];
         }
         Vector(Vector &&v) : dydis(v.dydis), capacity(v.capacity) { //Move kondtruktorius
+            std::cout << "Move Constructor\n";
             elementas = v.elementas;
             v.elementas = nullptr;
             v.dydis = 0;
             v.capacity = 0;
         }
         Vector& operator=(const Vector& v) { //Copy Assign operatorius
+            std::cout << "Copy Assign operator\n";
             if (&v == this)
                 return *this;
             T* p = new T [v.dydis];
@@ -39,6 +42,7 @@ class Vector {
             return *this;
         }
         Vector& operator=(Vector &&v) { //Move Assign operatorius
+            std::cout << "Move Assign operator\n";
             if (this == &v)
                 return *this;
             delete[] elementas;
@@ -215,12 +219,9 @@ class Vector {
         std::cout << "Element not found" << std::endl;
         }
        }
-       int max_size()  noexcept {
-        int maxsize = 0;
-        for (auto i = begin(); i != end(); i++)
-            maxsize++;
-        return maxsize;
-    }
+    T max_size() const noexcept {
+    return std::numeric_limits<T>::max();
+}
        void insert(int vieta, const T& el) {
     if(dydis != capacity) {
         int i;
